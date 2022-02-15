@@ -1,13 +1,15 @@
 from flask_restful import Api
   
-from services.apis import register,login_user,landinfo,PropertyQuote,SellerInfo,BuyerBudding
+from services import buyers,seller
+
 
 
 def initialize_routeapi(app):
     api = Api(app)
-    api.add_resource(register, '/api/register')
-    api.add_resource(login_user, '/api/login')
-    api.add_resource(landinfo, '/api/landinfo')
-    api.add_resource(PropertyQuote, '/api/property')
-    api.add_resource(SellerInfo, '/api/sellerinfo')
-    api.add_resource(BuyerBudding, '/api/buyer')
+    api.add_resource(seller.register, '/api/register')
+    api.add_resource(seller.LoginResource, '/api/login')
+    api.add_resource(seller.landinfo, '/api/landinfo')
+    api.add_resource(seller.PropertyQuote, '/api/property')
+    api.add_resource(seller.SellerInfo, '/api/sellerinfo')
+    api.add_resource(buyers.BuyerBudding, '/api/buyer')
+    api.add_resource(buyers.getBid, '/api/getbid')
