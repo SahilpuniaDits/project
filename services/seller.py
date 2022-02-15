@@ -67,8 +67,12 @@ class LoginResource(Resource):
                 token = Token(user.id)
                 db.session.add(token)
                 db.session.commit()
-                return {
-                        "token": token.value
+                # resp = Response("successfully login", status=201, mimetype='application/json')
+
+                return{
+                        "token": token.value,
+                        "massage" : "successfully login",
+                        "status":201
                     }
             else:
                 return {'message': "username or password is wrong"}, 404
